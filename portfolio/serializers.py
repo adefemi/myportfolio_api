@@ -18,19 +18,20 @@ class AboutcontentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Aboutcontent
 		fields = '__all__'
-
-
-class ExperienceSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Experience
-		fields = '__all__'
-
+  
 
 class ExperienceinputSerializer(serializers.ModelSerializer):
-	experience = ExperienceSerializer(read_only=True)
+    experience = serializers.CharField(read_only=True)
 	experience_id = serializers.IntegerField(write_only=True)
 	class Meta:
 		model = Experienceinput
+		fields = '__all__'
+
+
+class ExperienceSerializer(serializers.ModelSerializer):
+    experience_inputs = ExperienceinputSerializer(many=True, read_only=True)
+	class Meta:
+		model = Experience
 		fields = '__all__'
 
 
