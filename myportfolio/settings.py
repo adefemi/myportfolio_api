@@ -97,8 +97,16 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
 
 AUTH_PASSWORD_VALIDATORS = [
-	'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	'django.contrib.auth.password_validation.MinimumLengthValidator',
-	'django.contrib.auth.password_validation.CommonPasswordValidator',
-	'django.contrib.auth.password_validation.NumericPasswordValidator',
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
