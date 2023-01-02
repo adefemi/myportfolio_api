@@ -50,6 +50,9 @@ class Experienceinput(models.Model):
 class Projecttool(models.Model):
 	name = models.CharField(unique=True, max_length=100)
 	created_at = models.DateTimeField(auto_now_add=True)
+	
+	def __str__(self):
+		return self.name
 
 
 
