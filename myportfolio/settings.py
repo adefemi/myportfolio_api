@@ -96,7 +96,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = False
 
-CSRF_TRUSTED_ORIGINS = ['https://*']
+CSRF_TRUSTED_ORIGINS = ['https://api.adefemigreat.com']
 
 AUTH_PASSWORD_VALIDATORS = [
     {
