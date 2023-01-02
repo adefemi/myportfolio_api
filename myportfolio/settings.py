@@ -53,7 +53,7 @@ STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'myportfolio.urls'
 
-ALLOWED_HOSTS = ['https://*']
+ALLOWED_HOSTS = ['*']
 
 LANGUAGE_CODE = 'en-us'
 
