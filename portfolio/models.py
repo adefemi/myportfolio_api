@@ -5,8 +5,8 @@ class Userdetailmodel(models.Model):
 	welcome_title = models.CharField(null=False, blank=False, max_length=100)
 	welcome_note = models.CharField(null=False, blank=False, max_length=255)
 	welcome_description = models.TextField(null=False, blank=False, max_length=255)
-	cv_link = models.TextField(null=False, blank=False, max_length=255)
-	user_image = models.ImageField(null=False, blank=False, upload_to='images', max_length=255)
+	cv_link = models.FileField(null=False, blank=False, upload_to='images')
+	user_image = models.ImageField(null=False, blank=False, upload_to='images')
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
