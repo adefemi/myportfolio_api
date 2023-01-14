@@ -7,38 +7,46 @@ from .serializers import (UserdetailmodelSerializer, UsersociallinkSerializer, A
 class UserdetailmodelView(ModelViewSet):
 	queryset = Userdetailmodel.objects.all()
 	serializer_class = UserdetailmodelSerializer
+	http_method_names = ['get']
 
 
 class UsersociallinkView(ModelViewSet):
 	queryset = Usersociallink.objects.all()
 	serializer_class = UsersociallinkSerializer
+	http_method_names = ['get']
 
 
 class AboutcontentView(ModelViewSet):
 	queryset = Aboutcontent.objects.all()
 	serializer_class = AboutcontentSerializer
+	http_method_names = ['get']
 
 
 class ExperienceView(ModelViewSet):
 	queryset = Experience.objects.all()
 	serializer_class = ExperienceSerializer
+	http_method_names = ['get']
 
 
 class ExperienceinputView(ModelViewSet):
 	queryset = Experienceinput.objects.all()
 	serializer_class = ExperienceinputSerializer
+	http_method_names = ['get']
 
 
 class ProjecttoolView(ModelViewSet):
 	queryset = Projecttool.objects.all()
 	serializer_class = ProjecttoolSerializer
+	http_method_names = ['get']
 
 
 class ProjectView(ModelViewSet):
 	queryset = Project.objects.all()
 	serializer_class = ProjectSerializer
+	http_method_names = ['get']
 
 
 class BlogView(ModelViewSet):
 	queryset = Blog.objects.all()
 	serializer_class = BlogSerializer
+	http_method_names = ['get']
