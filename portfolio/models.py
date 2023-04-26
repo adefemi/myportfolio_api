@@ -70,7 +70,6 @@ class Project(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(unique=True, max_length=255)
-    cover = models.ImageField(upload_to='cover', null=True)
     link = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
