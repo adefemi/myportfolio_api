@@ -2,75 +2,81 @@ from django.db import models
 
 
 class Userdetailmodel(models.Model):
-	welcome_title = models.CharField(null=False, blank=False, max_length=100)
-	welcome_note = models.CharField(null=False, blank=False, max_length=255)
-	welcome_description = models.TextField(null=False, blank=False, max_length=255)
-	cv_link = models.FileField(null=False, blank=False, upload_to='images')
-	user_image = models.ImageField(null=False, blank=False, upload_to='images')
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    welcome_title = models.CharField(null=False, blank=False, max_length=100)
+    welcome_note = models.CharField(null=False, blank=False, max_length=255)
+    welcome_description = models.TextField(
+        null=False, blank=False, max_length=255)
+    cv_link = models.FileField(null=False, blank=False, upload_to='images')
+    user_image = models.ImageField(null=False, blank=False, upload_to='images')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Usersociallink(models.Model):
-	name = models.CharField(max_length=50)
-	link = models.TextField(max_length=50)
-	icon = models.ImageField(upload_to='icons')
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    name = models.CharField(max_length=50)
+    link = models.TextField(max_length=50)
+    icon = models.ImageField(upload_to='icons')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Aboutcontent(models.Model):
-	paragraph = models.TextField()
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    paragraph = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Experience(models.Model):
-	image = models.ImageField(upload_to='experience')
-	name = models.CharField(max_length=255)
-	title = models.CharField(max_length=255)
-	start = models.CharField(max_length=50)
-	end = models.CharField(max_length=50)
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    image = models.ImageField(upload_to='experience')
+    name = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    start = models.CharField(max_length=50)
+    end = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Experienceinput(models.Model):
-	content = models.TextField()
-	experience = models.ForeignKey('Experience', on_delete=models.CASCADE, related_name='experience_inputs')
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    content = models.TextField()
+    experience = models.ForeignKey(
+        'Experience', on_delete=models.CASCADE, related_name='experience_inputs')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Projecttool(models.Model):
-	name = models.CharField(unique=True, max_length=100)
-	created_at = models.DateTimeField(auto_now_add=True)
-	
-	def __str__(self):
-		return self.name
+    name = models.CharField(unique=True, max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
 
 
 class Project(models.Model):
-	title = models.CharField(max_length=255)
-	about = models.CharField(max_length=255)
-	tool = models.ManyToManyField('Projecttool', related_name='project_tools')
-	cover = models.ImageField(upload_to='cover')
-	link = models.TextField()
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=255)
+    about = models.CharField(max_length=255)
+    tool = models.ManyToManyField('Projecttool', related_name='project_tools')
+    cover = models.ImageField(upload_to='cover')
+    link = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('-created_at',)
+        
+    def __str__(self):
+        return self.title
 
 
 class Blog(models.Model):
-	title = models.CharField(unique=True, max_length=255)
-	cover = models.ImageField(upload_to='cover')
-	link = models.TextField()
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-
+    title = models.CharField(unique=True, max_length=255)
+    cover = models.ImageField(upload_to='cover', null=True)
+    link = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ('-created_at',)
+        
+    def __str__(self):
+        return self.title
